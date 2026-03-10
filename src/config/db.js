@@ -1,6 +1,3 @@
-/**
- * Configuração da conexão com MongoDB
- */
 const mongoose = require('mongoose');
 
 const connectDB = async () => {

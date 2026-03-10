@@ -1,14 +1,6 @@
-/**
- * Controller dos pedidos - CRUD e transformação dos dados
- */
 const Order = require('../models/Order.js');
 const { mapRequestToOrder, mapOrderToResponse } = require('../utils/mapOrderRequest.js');
 
-/**
- * Cria um novo pedido.
- * Recebe no body o JSON com numeroPedido, valorTotal, dataCriacao, items.
- * Faz o mapping dos campos e persiste no MongoDB.
- */
 async function createOrder(req, res, next) {
   try {
     const body = req.body;
@@ -49,9 +41,6 @@ async function createOrder(req, res, next) {
   }
 }
 
-/**
- * Obtém um pedido pelo número do pedido (orderId), passado como parâmetro na URL.
- */
 async function getOrderByNumber(req, res, next) {
   try {
     const { orderId } = req.params;
@@ -73,9 +62,6 @@ async function getOrderByNumber(req, res, next) {
   }
 }
 
-/**
- * Lista todos os pedidos.
- */
 async function listOrders(req, res, next) {
   try {
     const orders = await Order.find({}).sort({ creationDate: -1 });
@@ -89,10 +75,6 @@ async function listOrders(req, res, next) {
   }
 }
 
-/**
- * Atualiza um pedido pelo número do pedido.
- * Body no mesmo formato da criação (numeroPedido, valorTotal, dataCriacao, items).
- */
 async function updateOrder(req, res, next) {
   try {
     const { orderId } = req.params;
@@ -121,9 +103,6 @@ async function updateOrder(req, res, next) {
   }
 }
 
-/**
- * Remove um pedido pelo número do pedido.
- */
 async function deleteOrder(req, res, next) {
   try {
     const { orderId } = req.params;

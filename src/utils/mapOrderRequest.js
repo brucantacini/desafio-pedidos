@@ -1,15 +1,3 @@
-/**
- * Mapeia o JSON da requisição para o formato do banco de dados.
- * Request -> Documento MongoDB (Order/Items)
- *
- * Mapeamento:
- * - numeroPedido -> orderId
- * - valorTotal -> value
- * - dataCriacao -> creationDate (ISODate)
- * - items[].idItem -> productId (number)
- * - items[].quantidadeItem -> quantity
- * - items[].valorItem -> price
- */
 function mapRequestToOrder(body) {
   const items = (body.items || []).map((item) => ({
     productId: Number(item.idItem) || 0,
@@ -24,11 +12,6 @@ function mapRequestToOrder(body) {
     items,
   };
 }
-
-/**
- * Mapeia documento do banco para formato de resposta da API (opcional).
- * Mantém os nomes do banco (orderId, value, creationDate, items com productId, quantity, price).
- */
 function mapOrderToResponse(doc) {
   if (!doc) return null;
   const obj = doc.toObject ? doc.toObject() : doc;

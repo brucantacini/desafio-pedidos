@@ -1,7 +1,4 @@
-/**
- * Model Order - Collection no MongoDB
- * Campos: orderId, value, creationDate, items (array de subdocumentos)
- */
+
 const mongoose = require('mongoose');
 const itemSchema = require('./Item.js');
 
@@ -17,8 +14,7 @@ const orderSchema = new mongoose.Schema(
     versionKey: '__v',
   }
 );
-
-// Índice para buscas por orderId
+  
 orderSchema.index({ orderId: 1 });
 
 module.exports = mongoose.model('Order', orderSchema);

@@ -1,7 +1,3 @@
-/**
- * Schema do subdocumento Item (itens do pedido)
- * Campos no banco: productId, quantity, price
- */
 const mongoose = require('mongoose');
 
 const itemSchema = new mongoose.Schema(
